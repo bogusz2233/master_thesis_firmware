@@ -1,0 +1,1 @@
+add_subdirectory(hal_stm32f0)

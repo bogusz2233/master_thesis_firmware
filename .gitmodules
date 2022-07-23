@@ -1,0 +1,9 @@
+[submodule "externals/cmsis_device_f0"]
+	path = externals/cmsis_device_f0
+	url = https://github.com/STMicroelectronics/cmsis_device_f0.git
+[submodule "externals/cmsis_core"]
+	path = externals/cmsis_core
+	url = https://github.com/STMicroelectronics/cmsis_core.git
+[submodule "externals/stm32f0xx_hal_driver"]
+	path = externals/stm32f0xx_hal_driver
+	url = https://github.com/STMicroelectronics/stm32f0xx_hal_driver.git
