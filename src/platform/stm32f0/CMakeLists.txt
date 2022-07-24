@@ -17,10 +17,11 @@ target_sources(
     ${PLATFORM_LIB_NAME}
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/system_stm32f0xx.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/platform.cpp
 )
 
 target_link_libraries(
     ${PLATFORM_LIB_NAME}
-    PRIVATE
+    PUBLIC
     hal_stm32f0
 )

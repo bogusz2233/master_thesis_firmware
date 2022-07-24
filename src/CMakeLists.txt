@@ -23,6 +23,7 @@ function(build_image IMAGE_NAME ...)
         ${IMAGE_OUT_NAME}
         PRIVATE
         ${PLATFORM_LIB_NAME}
+        ${DRIVERS_LIB_NAME}
         freertos
         ${LIBRARIES_LIST}
     )
@@ -37,4 +38,5 @@ endfunction()
 add_subdirectory(config)
 add_subdirectory(libs)
 add_subdirectory(platform)
+add_subdirectory(drivers)
 add_subdirectory(apps)

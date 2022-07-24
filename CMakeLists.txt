@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 
-set(PLATFORM_LIB_NAME "platform")
+set(PLATFORM_LIB_NAME   "platform")
+set(DRIVERS_LIB_NAME    "drivers")
 
 add_subdirectory(toolchains)
 add_subdirectory(targets)
@@ -20,7 +21,7 @@ include(${TARGETS_DIR}/${TARGET}/CMakeLists.txt)
 project(master_thesis_firmware CXX ASM C)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(CMAKE_C_STANDARD 17)

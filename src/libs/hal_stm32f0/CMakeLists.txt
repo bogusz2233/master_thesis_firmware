@@ -10,6 +10,11 @@ target_sources(
     PRIVATE
     ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_gpio.c
     ${CMSIS_DEVICE_F0_DIR}/Source/Templates/gcc/startup_stm32f072xb.s
+
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal.c
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_cortex.c
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_rcc.c
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_rcc_ex.c
 )
 
 target_include_directories(
