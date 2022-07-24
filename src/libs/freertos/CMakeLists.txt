@@ -20,5 +20,5 @@ target_sources(
     ${FREERTOS_DIR}/timers.c
 )
 
-add_subdirectory(platforms/${PLATFORM})
+add_subdirectory(${PLATFORM})
 add_config_file(libs/freertos)
