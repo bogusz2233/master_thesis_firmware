@@ -10,3 +10,6 @@
 [submodule "externals/FreeRTOS-Kernel"]
 	path = externals/FreeRTOS-Kernel
 	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
+[submodule "externals/circular_buffer"]
+	path = externals/circular_buffer
+	url = git@gitlab.com:boguszewski-master-thesis/circular_buffer.git
