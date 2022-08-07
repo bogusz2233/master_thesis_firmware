@@ -28,5 +28,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
+add_compile_options(
+    $<$<CONFIG:Debug>:-g3>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
+    $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
+)
+
 add_subdirectory(externals)
 add_subdirectory(src)
