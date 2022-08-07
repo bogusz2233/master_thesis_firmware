@@ -4,7 +4,7 @@ namespace drivers {
 class IrqHandler {
   public:
     virtual ~IrqHandler(){};
-    virtual int Handle() = 0;
+    virtual void Handle() = 0;
 };
 
 } // namespace drivers

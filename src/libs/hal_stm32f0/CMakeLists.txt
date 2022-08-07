@@ -17,6 +17,8 @@ target_sources(
     ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_rcc_ex.c
     ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_tim.c
     ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_tim_ex.c
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_uart.c
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_uart_ex.c
 )
 
 target_include_directories(
