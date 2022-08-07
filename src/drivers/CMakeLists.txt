@@ -24,3 +24,4 @@ add_config_file(drivers)
 
 add_subdirectory(${PLATFORM}/rcc)
 add_subdirectory(${PLATFORM}/gpio)
+add_subdirectory(${PLATFORM}/nvic)
