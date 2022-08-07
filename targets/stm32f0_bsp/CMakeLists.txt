@@ -1,7 +1,7 @@
 set(CMAKE_TOOLCHAIN_FILE    ${TOOLCHAIN_DIR}/arm-none-eabi-gcc.cmake)
 set(EXECTUABLE_SUFFIX       .elf)
 set(PLATFORM                stm32f0)
-set(CONFIG                  stm32f0_v0_1)
+set(CONFIG                  stm32f072_disco_v0_1)
 
 add_compile_options(
     -mcpu=cortex-m0

@@ -13,11 +13,15 @@ enum class Command {
 };
 
 enum Status {
-    SUCCESS         = 0,
-    TIMEOUT         = -1,
-    IO_ERROR        = -2,
-    IVALID_ARGUMENT = -3,
-    NOT_IMPLEMENTED = -4,
+    SUCCESS               = 0,
+    TIMEOUT               = -1,
+    IO_ERROR              = -2,
+    IVALID_ARGUMENT       = -3,
+    NOT_IMPLEMENTED       = -4,
+    NULLPTR               = -5,
+    COMMAND_NOT_SUPPORTED = -6,
+    OUT_OF_RANGE          = -7,
+    OUT_OF_MEMORY         = -8,
 };
 
 class Driver {
@@ -26,7 +30,7 @@ class Driver {
     virtual int Init() = 0;
     virtual int Write(const void *data, int size);
     virtual int Read(void *data, int size);
-    virtual int Ioctl(Command cmd, void *param = nullptr);
+    virtual int Ioctl(Command cmd, ...);
 };
 
 } // namespace drivers

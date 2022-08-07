@@ -2,7 +2,7 @@ project(hal_stm32f0)
 
 add_library(
     ${PROJECT_NAME}
-    OBJECT
+    STATIC
 )
 
 target_sources(
@@ -15,6 +15,8 @@ target_sources(
     ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_cortex.c
     ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_rcc.c
     ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_rcc_ex.c
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_tim.c
+    ${STM32F0XX_HAL_DIR}/Src/stm32f0xx_hal_tim_ex.c
 )
 
 target_include_directories(

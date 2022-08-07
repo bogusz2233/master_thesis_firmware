@@ -1,4 +1,7 @@
-add_library( ${PLATFORM_LIB_NAME} )
+add_library( 
+    ${PLATFORM_LIB_NAME}
+    OBJECT
+)
 
 target_include_directories(
     ${PLATFORM_LIB_NAME}
