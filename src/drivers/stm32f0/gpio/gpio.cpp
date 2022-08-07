@@ -11,6 +11,9 @@ namespace drivers {
  * @retval Status::SUCCESS GPIO initialization success.
  */
 int Gpio::Init() {
+    lock = xSemaphoreCreateMutex();
+    if (lock == nullptr) return Status::OUT_OF_MEMORY;
+
     for (const GpioPortConfig &pin : config.ports_config) {
         if (pin.port == nullptr) return Status::NULLPTR;
 
@@ -110,7 +113,12 @@ inline int Gpio::PinSet(uint32_t pin_index, bool pin_state) {
     GPIO_PinState pin_set_flag = pin_state ? GPIO_PIN_SET : GPIO_PIN_RESET;
     const GpioPortConfig &pin  = config.ports_config[pin_index];
 
+    if (xSemaphoreTake(lock, pdMS_TO_TICKS(config.timeout_ms)) != pdPASS) {
+        return Status::TIMEOUT;
+    }
     HAL_GPIO_WritePin(pin.port, pin.pin_number, pin_set_flag);
+    xSemaphoreGive(lock);
+
     return Status::SUCCESS;
 }
 
@@ -127,7 +135,11 @@ inline int Gpio::PinGet(uint32_t pin_index) {
     if (pin_index >= config.ports_config.size()) return Status::OUT_OF_RANGE;
     const GpioPortConfig &pin = config.ports_config[pin_index];
 
-    return HAL_GPIO_ReadPin(pin.port, pin.pin_number) == GPIO_PinState::GPIO_PIN_SET;
+    if (xSemaphoreTake(lock, pdMS_TO_TICKS(config.timeout_ms)) != pdPASS) return Status::TIMEOUT;
+    GPIO_PinState state = HAL_GPIO_ReadPin(pin.port, pin.pin_number);
+    xSemaphoreGive(lock);
+
+    return state == GPIO_PinState::GPIO_PIN_SET;
 }
 
 } // namespace drivers
