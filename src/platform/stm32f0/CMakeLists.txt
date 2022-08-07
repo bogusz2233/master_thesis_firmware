@@ -18,6 +18,7 @@ target_sources(
     PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/system_stm32f0xx.c
     ${CMAKE_CURRENT_SOURCE_DIR}/platform.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/stm32f0xx_it.c
 )
 
 target_link_libraries(

@@ -17,8 +17,10 @@ target_link_libraries(
     ${DRIVERS_LIB_NAME}
     PRIVATE
     ${PLATFORM_LIB_NAME}
+    freertos
 )
 
 add_config_file(drivers)
 
 add_subdirectory(${PLATFORM}/rcc)
+add_subdirectory(${PLATFORM}/gpio)
