@@ -31,5 +31,5 @@ add_compile_options(
     --specs=nano.specs
     -ffunction-sections 
     -fdata-sections
-    -fstack-usage 
+    -fstack-usage
 )

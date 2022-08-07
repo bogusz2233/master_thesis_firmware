@@ -139,5 +139,6 @@ standard names. */
 #define configSTART_INTERRUPT_QUEUE_TESTS         0
 #define configSTART_REGISTER_TESTS                1
 #define configSTART_DELETE_SELF_TESTS             0
+#define configCHECK_FOR_STACK_OVERFLOW            2
 
 #endif /* FREERTOS_CONFIG_H */

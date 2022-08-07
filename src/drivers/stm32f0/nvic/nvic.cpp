@@ -10,7 +10,8 @@ namespace drivers {
 
 typedef void (*IrqHandleFunc_t)(void);
 
-const int MAX_INTERUPTS_NUM = 32;
+const int INTERUPT_OFFSET   = 16;
+const int MAX_INTERUPTS_NUM = 32 + INTERUPT_OFFSET;
 __attribute__((section(".isr_vector_ram"))) IrqHandleFunc_t vector_ram[MAX_INTERUPTS_NUM];
 const auto *FLASH_ISR_VECTOR                       = reinterpret_cast<const IrqHandleFunc_t *>(&_isr_flash_start);
 static IrqHandler *irq_handlers[MAX_INTERUPTS_NUM] = {nullptr};
@@ -82,7 +83,6 @@ inline int Nvic::RegisterIrq(IRQn_Type irq_type, IrqHandler *handler) {
     }
 
     __disable_irq();
-    const int INTERUPT_OFFSET                = 16;
     irq_handlers[irq_type + INTERUPT_OFFSET] = handler;
     vector_ram[irq_type + INTERUPT_OFFSET]   = IrqHandle;
     __enable_irq();

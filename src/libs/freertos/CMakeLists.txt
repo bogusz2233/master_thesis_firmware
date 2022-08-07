@@ -18,6 +18,8 @@ target_sources(
     ${FREERTOS_DIR}/queue.c
     ${FREERTOS_DIR}/list.c
     ${FREERTOS_DIR}/timers.c
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/freertos.cpp
 )
 
 add_subdirectory(${PLATFORM})

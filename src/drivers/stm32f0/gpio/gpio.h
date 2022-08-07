@@ -15,6 +15,7 @@ enum class GpioInialState {
     RESET,
 };
 
+/// @brief Gpio pin configuration
 struct GpioPortConfig {
     GPIO_TypeDef *port;  // < GPIOx
     uint16_t pin_number; // < This parameter can be any value of @ref GPIO_pins
@@ -25,6 +26,9 @@ struct GpioPortConfig {
     uint32_t alternate; //< This parameter can be a value of @ref GPIOEx_Alternate_function_selection
 };
 
+/**
+ * @brief Macro use to configure pin as output push-pull.
+ */
 constexpr GpioPortConfig GPIO_OUTPUT_PP(GPIO_TypeDef *port, uint16_t pin_number, uint32_t speed,
                                         GpioInialState initial = GpioInialState::UNDEFINED) {
     GpioPortConfig config{
@@ -34,6 +38,23 @@ constexpr GpioPortConfig GPIO_OUTPUT_PP(GPIO_TypeDef *port, uint16_t pin_number,
         .pull          = GPIO_NOPULL,
         .speed         = speed,
         .initial_state = initial,
+    };
+
+    return config;
+}
+
+/**
+ * @brief Macro use to configure pin in alternate mode.
+ */
+constexpr GpioPortConfig GPIO_ALTERNATE(GPIO_TypeDef *port, uint16_t pin_number, uint32_t speed, uint32_t alternate) {
+    GpioPortConfig config{
+        .port          = port,
+        .pin_number    = pin_number,
+        .mode          = GPIO_MODE_AF_PP,
+        .pull          = GPIO_NOPULL,
+        .speed         = speed,
+        .initial_state = GpioInialState::UNDEFINED,
+        .alternate     = alternate,
     };
 
     return config;
@@ -52,7 +73,7 @@ class Gpio : public Driver {
 
   private:
     const GpioConfig &config;
-    SemaphoreHandle_t lock;
+    SemaphoreHandle_t lock; ///< Protect GPIO shared resources.
 
     static bool EnablePortClock(const GPIO_TypeDef *port);
     void SetupInitialPinState(const GpioPortConfig &pin);
