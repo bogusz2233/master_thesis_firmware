@@ -10,6 +10,9 @@ enum class Command {
     // GPIO:
     GPIO_PIN_SET,
     GPIO_PIN_GET,
+
+    // NVIC:
+    NVIC_REGISTER_IRQ,
 };
 
 enum Status {

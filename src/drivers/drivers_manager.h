@@ -10,6 +10,7 @@ enum class Major {
     RCC,
     GPIO,
     UART,
+    NVIC_HANDLER,
     _DEVICE_MAJOR_COUNT,
 };
 
