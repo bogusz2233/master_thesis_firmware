@@ -1,22 +1,28 @@
+#include "FreeRTOS.h"
+#include "app.h"
 #include "drivers_manager.h"
-#include "gpio_config.h"
 #include "platform.h"
+#include "task.h"
 #include <assert.h>
+
+static void SystemRun(void *);
 
 int main() {
     platform::Init();
     driver_manager.InitDrivers(drivers::InitStage::BeforeSystemBoot);
 
-    drivers::Driver *gpio = driver_manager.GetDriver(drivers::Major::GPIO, 0);
-    assert(gpio != nullptr);
+    xTaskCreate(SystemRun, "System-Run", configMINIMAL_STACK_SIZE, nullptr, 1, nullptr);
+
+    vTaskStartScheduler();
 
     while (true) {
-        gpio->Ioctl(drivers::Command::GPIO_PIN_SET, drivers::GpioPinName::LED_D, true);
-        gpio->Ioctl(drivers::Command::GPIO_PIN_SET, drivers::GpioPinName::LED_L, false);
-        platform::DelayMs(250);
-        gpio->Ioctl(drivers::Command::GPIO_PIN_SET, drivers::GpioPinName::LED_D, false);
-        platform::DelayMs(250);
+        // Should never go there
     }
 
     return 0;
+}
+
+static void SystemRun(void *) {
+    driver_manager.InitDrivers(drivers::InitStage::AfterSystemBoot);
+    ApplicationMain();
 }

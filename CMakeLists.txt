@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.23)
 
-set(PLATFORM_LIB_NAME   "platform")
-set(DRIVERS_LIB_NAME    "drivers")
+set(PLATFORM_LIB_NAME       "platform")
+set(DRIVERS_LIB_NAME        "drivers")
+set(APP_INTERFACE_LIB_NAME  "app_interface")
 
 add_subdirectory(toolchains)
 add_subdirectory(targets)

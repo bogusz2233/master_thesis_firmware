@@ -23,8 +23,7 @@ function(build_image IMAGE_NAME ...)
         ${IMAGE_OUT_NAME}
         PRIVATE
         ${PLATFORM_LIB_NAME}
-        ${DRIVERS_LIB_NAME}
-        freertos
+        ${APP_INTERFACE_LIB_NAME}
         ${LIBRARIES_LIST}
     )
 
